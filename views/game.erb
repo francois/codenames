@@ -2,20 +2,40 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Code Names en ligne</title>
 <style>
-.grid caption { text-align: center; }
-.grid .starter { display: block; margin: 0 auto 20px auto; width: 100px; height: 100px; }
-.grid .cell { color: white; width: 100px; height: 100px; }
-.red { background-color: red; }
-.blue { background-color: blue; }
-.neutral { background-color: tan; }
-.black { background-color: black; }
+.grid caption  { text-align: center; }
+.grid .starter { display: block; }
+.grid .cell    { color: white; }
+.red           { background-color: red; }
+.blue          { background-color: blue; }
+.neutral       { background-color: tan; }
+.black         { background-color: black; }
+
+html           { font-size: 24px; }
+.grid .starter { display: block; margin: 0 auto 70px auto; width: 100px; height: 100px; }
+.grid .cell    { color: white; width: 100px; height: 100px; }
+form, form *   { font-size: 18px; }
+
+@media only screen and (max-width: 640px) {
+  html           { font-size: 24px; }
+  .grid .starter { margin: 0 auto 8px auto; width: 54px; height: 54px; }
+  .grid .cell    { width: 54px; height: 54px; }
+  form, form *   { font-size: 18px; }
+  .sm            { display: none; }
+}
+
+@media only screen and (max-width: 1200px) {
+  html           { font-size: 24px; }
+  .grid .starter { margin: 0 auto 12px auto; width: 132px; height: 132px; }
+  .grid .cell    { width: 132px; height: 132px; }
+  form, form *   { font-size: 20px; }
+}
 </style>
   </head>
   <body>
-    <h1>Code Names en ligne</h1>
-    <h2><em><%= @game_name %></em></h2>
+    <h1><span class="sm">Code Names en ligne: </span><em><%= @game_name %></em></h1>
 
     <table class="grid">
       <caption><span title="<%= @starter %>" class="starter <%= @starter %>">&nbsp;</span></caption>
