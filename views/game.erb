@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Code Names en ligne</title>
+<style>
+.grid caption { text-align: center; }
+.grid .starter { display: block; margin: 0 auto 20px auto; width: 100px; height: 100px; }
+.grid .cell { color: white; width: 100px; height: 100px; }
+.red { background-color: red; }
+.blue { background-color: blue; }
+.neutral { background-color: tan; }
+.black { background-color: black; }
+</style>
+  </head>
+  <body>
+    <h1>Code Names en ligne</h1>
+    <h2>Partie: <em><%= @game_name %></em></h2>
+
+    <table class="grid">
+      <caption><span title="<%= @starter %>" class="starter <%= @starter %>">&nbsp;</span></caption>
+      <% @grid.each do |row| %>
+        <tr>
+          <% row.each do |cell| %>
+            <td class="cell <%= cell %>"><span title="<%= cell %>">&nbsp;</span></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+
+    <p><a href="/game?name=<%= @new_game_name %>">Nouvelle partie</a></p>
+
+    <form method="get" action="/game">
+      <label>Nom de la partie:
+        <input type="text" name="name"></label>
+      <button type="submit">Rejoindre la partie</button>
+    </form>
+  </body>
+</html>
