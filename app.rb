@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 require "sinatra"
+require "securerandom"
 
 configure do
   WORDS = File.read("words.txt").split("\n").freeze
 end
 
 def new_game_name
-  srand(Time.now.to_i)
-  3.times.map{ rand(WORDS.size) }.map{|idx| WORDS[idx]}.join("-")
+  seed = SecureRandom.hex(4).to_i(16)
+  srand(seed)
+  3.times.map{ rand(WORDS.size) }.map{|idx| WORDS[idx]}.join(" ")
 end
 
 get "/" do
